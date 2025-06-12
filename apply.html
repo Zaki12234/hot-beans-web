@@ -1,117 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <!-- NEW: Mobile responsive viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Application Form – Hot Beans Web</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #111;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            color: #f39c12;
-        }
-
-        form {
-            background-color: #222;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.7);
-            width: 100%;
-            max-width: 500px;
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            border: none;
-            border-radius: 4px;
-            background-color: #333;
-            color: #fff;
-        }
-
-        button {
-            margin-top: 20px;
-            padding: 12px 20px;
-            background-color: #f39c12;
-            border: none;
-            border-radius: 4px;
-            color: #111;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        button:hover {
-            background-color: #e67e22;
-        }
-
-        footer {
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.9em;
-            color: #888;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Application Form – Hot Beans Web</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #111; color:#fff;
+      display:flex; flex-direction:column;
+      min-height:100vh; justify-content:center;
+      align-items:center; padding:20px;
+    }
+    h1 { margin-bottom:20px; color:#f39c12; }
+    form {
+      background:#222; padding:20px;
+      border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.7);
+      width:100%; max-width:500px;
+    }
+    label { display:block; margin-top:10px; font-weight:bold; }
+    input, textarea, select {
+      width:100%; padding:10px; margin-top:5px;
+      border:none; border-radius:4px;
+      background:#333; color:#fff;
+    }
+    button {
+      margin-top:20px; padding:12px 20px;
+      background:#f39c12; border:none;
+      border-radius:4px; color:#111;
+      font-weight:bold; cursor:pointer;
+      transition:background-color .3s;
+    }
+    button:hover { background:#e67e22; }
+    footer {
+      margin-top:40px; text-align:center;
+      font-size:.9em; color:#888;
+    }
+  </style>
 </head>
-
 <body>
 
-    <h1>Application Form</h1>
+  <h1>Application Form</h1>
 
-    <form onsubmit="alert('Application Submitted!'); return false;">
-        <label for="fullname">Full Name:</label>
-        <input type="text" id="fullname" name="fullname" required>
+  <!-- No onsubmit, no action/method -->
+  <form>
+    <label for="fullname">Full Name:</label>
+    <input type="text" id="fullname" name="fullname" required>
 
-        <label for="email">Email Address:</label>
-        <input type="email" id="email" name="email" required>
+    <label for="email">Email Address:</label>
+    <input type="email" id="email" name="email" required>
 
-        <label for="position">Position Applied For:</label>
-        <select id="position" name="position" required>
-            <option value="">-- Select Position --</option>
-            <option value="frontend">Front-End Developer</option>
-            <option value="backend">Back-End Developer</option>
-            <option value="fullstack">Full-Stack Developer</option>
-            <option value="designer">UI/UX Designer</option>
-        </select>
+    <label for="position">Position Applied For:</label>
+    <select id="position" name="position" required>
+      <option value="">-- Select Position --</option>
+      <option value="frontend">Front-End Developer</option>
+      <option value="backend">Back-End Developer</option>
+      <option value="fullstack">Full-Stack Developer</option>
+      <option value="designer">UI/UX Designer</option>
+    </select>
 
-        <label for="cv">Upload CV:</label>
-        <!-- NEW: accept common resume formats -->
-        <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx">
+    <label for="cv">Upload CV:</label>
+    <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx">
 
-        <label for="coverletter">Cover Letter:</label>
-        <textarea id="coverletter" name="coverletter" rows="5"></textarea>
+    <label for="coverletter">Cover Letter:</label>
+    <textarea id="coverletter" name="coverletter" rows="5"></textarea>
 
-        <button type="submit">Submit Application</button>
-    </form>
+    <!-- THIS button never submits the form, just triggers the alert -->
+    <button type="button" onclick="alert('Application Submitted!');">
+      Submit Application
+    </button>
+  </form>
 
-    <footer>
-        &copy; 2025 Hot Beans Web. All rights reserved.
-    </footer>
+  <footer>
+    &copy; 2025 Hot Beans Web. All rights reserved.
+  </footer>
 
 </body>
 </html>
