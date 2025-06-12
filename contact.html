@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Contact Us – Hot Beans Web</title>
+
+
+<style>/* ---------------------------------- */
+/* GLOBAL RESET + BASE STYLES         */
+/* ---------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* ---------------------------------- */
+/* DARK THEME                         */
+/* ---------------------------------- */
+body {
+  background-color: #111;       /* deep charcoal */
+  color: #fff;                  /* white text */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ---------------------------------- */
+/* HEADER / NAVBAR STYLES             */
+/* ---------------------------------- */
+header {
+  background-color: #1a1a1a;    /* slightly lighter dark */
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  animation: fadeIn 1s ease-in-out;
+}
+
+header h1 {
+  color: #fff;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  color: #55aaff;               /* bright blue */
+  text-decoration: none;
+  font-size: 1.1rem;
+  padding: 4px 8px;
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
+}
+
+/* Underline animation on hover */
+.nav-links a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: #55aaff;
+  width: 0%;
+  transition: width 0.3s ease;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Hover: text becomes white + slight lift */
+.nav-links a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------- */
+/* MAIN HERO SECTION STYLES           */
+/* ---------------------------------- */
+main {
+  flex: 1;
+}
+
+.hero {
+  background-color: #222;       /* dark gray panel */
+  margin: 30px auto;
+  max-width: 800px;
+  padding: 30px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ddd;
+  margin-bottom: 15px;
+}
+
+/* ---------------------------------- */
+/* CONTENT SECTION STYLES             */
+/* ---------------------------------- */
+.content {
+  background-color: #222;
+  margin: 30px auto;
+  max-width: 800px;
+  padding: 25px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.content h2 {
+  font-size: 1.9rem;
+  margin-bottom: 18px;
+  color: #fff;
+}
+
+.content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ddd;
+  margin-bottom: 15px;
+}
+
+.content ul {
+  list-style: disc inside;
+  margin-left: 20px;
+  margin-bottom: 15px;
+  color: #ddd;
+}
+
+.content ul.job-list li,
+.content ul.spec-list li,
+.content ul.links-list li,
+.content ul.social-list li {
+  margin-bottom: 8px;
+}
+
+.content a {
+  color: #55aaff;
+  text-decoration: none;
+}
+.content a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* ---------------------------------- */
+/* APPLICATION FORM STYLES            */
+/* ---------------------------------- */
+form {
+  margin-top: 15px;
+}
+form label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+  color: #ddd;
+}
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 12px 0;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+form .btn {
+  background-color: #55aaff;
+  color: #111;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+form .btn:hover {
+  background-color: #337fcc;
+  transform: translateY(-2px);
+}
+
+/* Thank-you message */
+.thankyou {
+  background: #333;
+  color: #ddd;
+  padding: 20px;
+  border-radius: 6px;
+  margin-top: 20px;
+  text-align: center;
+  display: none;
+}
+.thankyou.show {
+  display: block;
+}
+
+/* ---------------------------------- */
+/* COOKIE BANNER STYLES               */
+/* ---------------------------------- */
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #222;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  z-index: 200;
+  animation: fadeIn 0.8s ease-in-out;
+}
+.cookie-banner button {
+  background-color: #55aaff;
+  color: #111;
+  border: none;
+  padding: 6px 12px;
+  margin: 0 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.cookie-banner button:hover {
+  background-color: #337fcc;
+  transform: translateY(-1px);
+}
+.cookie-banner a {
+  color: #55aaff;
+  text-decoration: underline;
+  margin-left: 8px;
+}
+
+/* ---------------------------------- */
+/* FOOTER STYLES                       */
+/* ---------------------------------- */
+footer {
+  background-color: #1a1a1a;
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-top: auto;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* ---------------------------------- */
+/* FADE-IN KEYFRAMES                   */
+/* ---------------------------------- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------------------------- */
+/* RESPONSIVE MEDIA QUERIES            */
+/* ---------------------------------- */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  .nav-links {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .nav-links a {
+    font-size: 1rem;
+  }
+  .hero,
+  .content {
+    margin: 20px;
+    padding: 20px;
+  }
+  .content h2,
+  .hero h2 {
+    font-size: 1.6rem;
+  }
+  .hero p,
+  .content p {
+    font-size: 1rem;
+  }
+  form input,
+  form select,
+  form textarea {
+    font-size: 0.95rem;
+  }
+}
+/* Active and hover styles for navigation */
+.header-nav a.nav-link {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #00aaff;
+}
+.header-nav a.nav-link.current,
+.header-nav a.nav-link:hover,
+.header-nav a.nav-link:focus {
+  color: #ffffff;
+  border-bottom: 2px solid #00aaff;
+}
+
+/* Improve background and text contrast */
+body {
+  background-color: #091011; 
+  color: #e0e0e0; 
+  line-height: 1.5;
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Back to Top button styles */
+#backToTop {
+  display: none;
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #00aaff;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 1.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1000;
+}
+#backToTop.show {
+  display: block;
+}
+
+/* Mobile hamburger menu */
+.hamburger {
+  display: none;
+  cursor: pointer;
+}
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px 0;
+  transition: 0.4s;
+}
+/* Hide nav links, show hamburger on small screens */
+@media (max-width: 768px) {
+  .header-nav {
+    display: none;
+    flex-direction: column;
+    background-color: #1a1a1a;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+/* When checkbox is checked, show nav */
+#menu-toggle:checked + .hamburger + .header-nav {
+  display: flex;
+}
+.header-nav a.nav-link {
+  padding: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+</style></head>
+<body>
+<header>
+<h1>Contact Us</h1>
+<nav>
+<ul class="nav-links">
+<li><a class="nav-link" href="index.html">Home</a></li>
+<li><a class="nav-link" href="about.html">About Us</a></li>
+<li><a class="nav-link" href="jobs.html">Jobs</a></li>
+<li><a class="nav-link" href="specification.html">Specification</a></li>
+<li><a class="nav-link" href="links.html">Useful Links</a></li>
+<li><a class="nav-link" href="apply.html">Application Form</a></li>
+<li><a class="nav-link" href="learnmore.html">Learn More</a></li>
+</ul>
+</nav>
+</header>
+<main>
+<section class="content">
+<h2>Get In Touch</h2>
+<p>
+        Have questions about our courses, corporate training, or project collaborations? We’re here to help. Reach out via:
+      </p>
+<p>
+<strong>Email:</strong> <a class="inline-link" href="mailto:support@hotbeansweb.com">support@hotbeansweb.com</a><br/>
+<strong>Phone:</strong> +44 1234 567890<br/>
+<strong>Address:</strong> 10 Tech Street, Manchester, UK
+      </p>
+<p>Follow us on social media:</p>
+<ul class="social-list">
+<li><a class="nav-link" href="https://twitter.com/hotbeansweb" rel="noopener" target="_blank">Twitter</a></li>
+<li><a class="nav-link" href="https://linkedin.com/company/hotbeansweb" rel="noopener" target="_blank">LinkedIn</a></li>
+<li><a class="nav-link" href="https://github.com/hotbeansweb" rel="noopener" target="_blank">GitHub</a></li>
+</ul>
+</section>
+</main>
+<div class="cookie-banner" id="cookie-banner">
+    This site uses cookies to enhance your experience.
+    <button onclick="acceptCookies()">Accept</button>
+<button onclick="rejectCookies()">Reject</button>
+<a href="learnmore.html">Learn More</a>
+</div>
+<footer>
+<p>© 2025 Hot Beans Web | Designed by Zaki</p>
+</footer>
+<script>// script.js
+// Manages cookie banner logic and application form submission
+
+document.addEventListener('DOMContentLoaded', function () {
+  // COOKIE BANNER (only shown on pages that include it in HTML)
+  var banner = document.getElementById('cookie-banner');
+  if (banner) {
+    var acceptBtn = banner.querySelector('button:nth-child(2)');
+    var rejectBtn = banner.querySelector('button:nth-child(3)');
+
+    acceptBtn.addEventListener('click', function () {
+      banner.style.display = 'none';
+      localStorage.setItem('cookiesAccepted', 'true');
+    });
+    rejectBtn.addEventListener('click', function () {
+      banner.style.display = 'none';
+      localStorage.setItem('cookiesAccepted', 'false');
+    });
+
+    // If user has already made a choice, hide banner
+    var saved = localStorage.getItem('cookiesAccepted');
+    if (saved === 'true' || saved === 'false') {
+      banner.style.display = 'none';
+    }
+  }
+
+  // APPLICATION FORM SUBMISSION (apply.html)
+  var form = document.getElementById('appForm');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      // Basic front-end validation: ensure required fields are filled
+      var name = document.getElementById('name').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var role = document.getElementById('role').value;
+      var message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !role || !message) {
+        alert('Please fill out all required fields before submitting.');
+        return;
+      }
+
+      // Hide form and show thank-you
+      form.style.display = 'none';
+      var thankyou = document.getElementById('thankyou');
+      if (thankyou) thankyou.classList.add('show');
+    });
+  }
+});
+</script><button id="backToTop" aria-label="Back to Top">↑</button>
+</body>
+</html>
