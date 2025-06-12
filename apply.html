@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- NEW: Mobile responsive viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application Form – Hot Beans Web</title>
     <style>
         * {
@@ -98,7 +100,8 @@
         </select>
 
         <label for="cv">Upload CV:</label>
-        <input type="file" id="cv" name="cv">
+        <!-- NEW: accept common resume formats -->
+        <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx">
 
         <label for="coverletter">Cover Letter:</label>
         <textarea id="coverletter" name="coverletter" rows="5"></textarea>
